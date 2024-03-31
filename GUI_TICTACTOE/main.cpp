@@ -14,6 +14,15 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
     if(CheckWin())
     {
         game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+        game_ui.pushButton_0_0->setEnabled(false);
+        game_ui.pushButton_0_1->setEnabled(false);
+        game_ui.pushButton_0_2->setEnabled(false);
+        game_ui.pushButton_1_0->setEnabled(false);
+        game_ui.pushButton_1_1->setEnabled(false);
+        game_ui.pushButton_1_2->setEnabled(false);
+        game_ui.pushButton_2_0->setEnabled(false);
+        game_ui.pushButton_2_1->setEnabled(false);
+        game_ui.pushButton_2_2->setEnabled(false);
     }
     play = (play=='X')?'O':'X';
     turn++;
