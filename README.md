@@ -1,5 +1,5 @@
-##TIC-TAC-TOE using QT creator and QT designer__
-##This project is used for learning__
+##TIC-TAC-TOE using QT creator and QT designer
+##This project is used for learning
 
 ###This project has 2 parts:
     1. Console
@@ -21,6 +21,7 @@
     - Create a pop-up GUI to inform result. -Dat
     - Create a GUI to choose mod (P Vs Bot, P vs P). -Nhi:
         + Firstly, Test with 2 .ui files.
+        + ![alt text] (GUI_TEST.png)
     - Code for Bot. -Nghia
     - Decorate GUI (Draw in paper first). -Nhan 
 
