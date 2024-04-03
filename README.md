@@ -21,7 +21,7 @@
     - Create a pop-up GUI to inform result. -Dat
     - Create a GUI to choose mod (P Vs Bot, P vs P). -Nhi:
         + Firstly, Test with 2 .ui files.
-        + ![Image description] (./Image/GUI_TEST.png)
+        +![alt text](./Image/GUI_TEST.png)
     - Code for Bot. -Nghia
     - Decorate GUI (Draw in paper first). -Nhan 
 
