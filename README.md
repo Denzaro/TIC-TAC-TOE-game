@@ -17,13 +17,17 @@
     - Done in running basic GUI.  
 
 ###Undone tasks:
-    - Create a pop-up GUI to choose whether if user want to restart or comeback GUI MOD.   
-    - Create a pop-up GUI to inform result. -Dat  
+    - Create a button -> pop-up GUI to choose whether if user want to restart or comeback GUI MOD -Dat:  
+        +Firstly, Test with 3 UI as below:  
+        ++![alt text](./Image/GUI_TEST_OPTION.png)  
+        +When choose  Play again, clear on labels and clear all value in 2 dimension array.    
+    - Create a pop-up GUI to inform result of the game. -Dat  
     - Create a GUI to choose mod (P Vs Bot, P vs P). -Nhi:  
-        + Firstly, Test with 2 .ui files.  
+        + Firstly, Test with 2 .ui files and test as the image below.    
         +![alt text](./Image/GUI_TEST.png)  
     - Code for Bot. -Nghia  
-    - Decorate GUI (Draw in paper first). -Nhan   
+    - Decorate GUI (Draw in paper first). -Nhan  
+    - Run with .exe file.   
 
 ###About GIT  
     - Follow setup on websites: https://phoenixnap.com/kb/how-to-install-git-windows  
