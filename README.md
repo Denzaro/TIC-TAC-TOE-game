@@ -1,5 +1,5 @@
-##TIC-TAC-TOE using QT creator and QT designer
-##This project is used for learning 
+##TIC-TAC-TOE using QT creator and QT designer__
+##This project is used for learning__
 
 ###This project has 2 parts:
     1. Console
