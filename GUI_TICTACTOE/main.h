@@ -19,6 +19,7 @@ struct pair_hash {
 
 extern std::unordered_map<std::pair<uint8_t, uint8_t>, int, pair_hash> ID;
 
+int a;
 
 class GameInterface:public QObject, public Rules
 {
