@@ -31,6 +31,96 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
         game_ui.label_turn->setText(QString("Fking Draw!"));
 }
 
+std::unordered_map<std::pair<uint8_t, uint8_t>, int, pair_hash> ID =
+{
+        {{0, 0}, 0},
+        {{0, 1}, 1},
+        {{0, 2}, 2},
+        {{1, 0}, 3},
+        {{1, 1}, 4},
+        {{1, 2}, 5},
+        {{2, 0}, 6},
+        {{2, 1}, 7},
+        {{2, 2}, 8},
+};
+
+
+void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_column)
+{
+    row = in_row;
+    column = in_column;
+    board[row][column] = play;
+    if(play=='X')
+        button->setText(QString(play));
+    else
+        button->setText(QString(play));
+    /*-------------Check win------------------*/
+    if(CheckWin())
+    {
+        game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+        game_ui.pushButton_0_0->setEnabled(false);
+        game_ui.pushButton_0_1->setEnabled(false);
+        game_ui.pushButton_0_2->setEnabled(false);
+        game_ui.pushButton_1_0->setEnabled(false);
+        game_ui.pushButton_1_1->setEnabled(false);
+        game_ui.pushButton_1_2->setEnabled(false);
+        game_ui.pushButton_2_0->setEnabled(false);
+        game_ui.pushButton_2_1->setEnabled(false);
+        game_ui.pushButton_2_2->setEnabled(false);
+    }
+    play = (play=='X')?'O':'X';
+    turn++;
+    button->setEnabled(false);
+
+    /*-----------------Check Draw here-----------------*/
+    if(turn==9 && !CheckWin())
+        game_ui.label_turn->setText(QString("Fking Draw!"));
+    else
+    /*-----------------Bot operation here--------------*/
+    if(turn%2!=0)
+    {
+        while(board[random_row][random_column]!=' ')
+        {
+            random_row = rand()%3;
+            random_column = rand()%3;
+        }
+        random = std::make_pair(random_row,random_column);
+
+            switch(ID[random])
+            {
+                case 0:
+                    game_ui.pushButton_0_0->click();
+                    break;
+                case 1:
+                    game_ui.pushButton_0_1->click();
+                    break;
+                case 2:
+                    game_ui.pushButton_0_2->click();
+                    break;
+                case 3:
+                    game_ui.pushButton_1_0->click();
+                    break;
+                case 4:
+                    game_ui.pushButton_1_1->click();
+                    break;
+                case 5:
+                    game_ui.pushButton_1_2->click();
+                    break;
+                case 6:
+                    game_ui.pushButton_2_0->click();
+                    break;
+                case 7:
+                    game_ui.pushButton_2_1->click();
+                    break;
+                case 8:
+                    game_ui.pushButton_2_2->click();
+                    break;
+            }
+    }
+}
+
+
+
 // void GameInterface::handleButtonClick_0_0()
 // {
 //     row = 0 ;
