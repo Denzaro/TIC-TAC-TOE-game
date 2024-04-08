@@ -33,7 +33,7 @@
     - Follow setup on websites: https://phoenixnap.com/kb/how-to-install-git-windows  
     - To use git:  
         1. Creating a folder.  
-        2. git initial  
+        2. git init  
         3. git clone -original https://github.com/Denzaro/TIC-TAC-TOE-game  
         4. git checkout master  
         5. Modify codes.  
