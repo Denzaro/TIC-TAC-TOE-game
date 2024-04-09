@@ -26,6 +26,7 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
     }
     play = (play=='X')?'O':'X';
     turn++;
+    /*Each time press button, disable that button*/
     button->setEnabled(false);
     if(turn==9 && !CheckWin())
         game_ui.label_turn->setText(QString("Fking Draw!"));
@@ -43,7 +44,6 @@ std::unordered_map<std::pair<uint8_t, uint8_t>, int, pair_hash> ID =
         {{2, 1}, 7},
         {{2, 2}, 8},
 };
-
 
 void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_column)
 {
@@ -68,17 +68,20 @@ void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_
         game_ui.pushButton_2_1->setEnabled(false);
         game_ui.pushButton_2_2->setEnabled(false);
     }
-    play = (play=='X')?'O':'X';
     turn++;
+    play = (play=='X')?'O':'X';
     button->setEnabled(false);
-
     /*-----------------Check Draw here-----------------*/
     if(turn==9 && !CheckWin())
-        game_ui.label_turn->setText(QString("Fking Draw!"));
-    else
-    /*-----------------Bot operation here--------------*/
-    if(turn%2!=0)
     {
+        game_ui.label_turn->setText(QString("Fking Draw!"));
+        if(!CheckWin())
+        game_ui.label->setText(QString("Checkpoint"));
+    }
+    /*-----------------Bot operation here--------------*/
+    if(turn%2!=0 && !CheckWin() && turn<9)
+    {
+        /*Generate random unquie index*/
         while(board[random_row][random_column]!=' ')
         {
             random_row = rand()%3;
@@ -118,8 +121,6 @@ void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_
             }
     }
 }
-
-
 
 // void GameInterface::handleButtonClick_0_0()
 // {
