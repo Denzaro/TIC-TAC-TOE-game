@@ -25,6 +25,8 @@
     - Run .exe file successfully - Dat  
     - Flowchart for algorithms - Nghia  
     - Flowchart for GUI - Nhan  
+    - Organize file and folder (All .h file in a folder and all .cpp file in a folder)  
+    - Image used for GUI put in folder img  
     - PowerPoint - Nhi  
     - Word - Nhi  
 
