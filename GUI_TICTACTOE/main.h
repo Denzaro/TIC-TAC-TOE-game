@@ -3,7 +3,54 @@
 
 #include "tictactoe_ui.h"
 #include "tictactoe_op.h"
+#include "GUI_LEVEL.h"
+#include "GUI_MOD.h"
+#include "option.h"
+#include "result_tictactoe.h"
 #include <QObject>
+
+
+class GUI_option :public QObject
+{
+    Q_OBJECT
+public slots:
+    void show_GUI_Option();
+
+};
+
+
+// Class giao diện kết quả
+class GUI_Result : public QObject
+{
+    Q_OBJECT
+
+public slots:
+    void show_result(const QString &win,const QString & lose);
+
+private:
+    Result result;
+
+};
+
+
+
+
+class guiStart: public QObject
+{
+    Q_OBJECT
+public slots:
+    void showUIMode();
+};
+
+
+class guiLevel: public QObject
+{
+    Q_OBJECT
+public slots:
+    void showUILevel();
+};
+
+
 
 class GameInterface:public QObject, public Rules
 {
@@ -12,9 +59,11 @@ private:
     QApplication app;
     MainWindow game_ui;
 public:
-    GameInterface(int agrc, char *agrv[], int c=0,MODE mode=MEDIUMMODE):app(agrc,agrv),Rules(c)
+    GameInterface(int agrc, char *agrv[], int c,MODE mode):app(agrc,agrv),Rules(c)
     {
         game_ui.setupUi(&game_ui);
+        GUI_option*option1=new GUI_option;
+        connect(game_ui.Connect, &QPushButton::clicked, option1,&GUI_option::show_GUI_Option);
         switch(mode)
         {
         case HUMANMODE:
@@ -81,8 +130,8 @@ public:
     void handleButtonClickHardBot(QPushButton *button, int in_row, int in_column);
     void handleButtonClickMediumBot(QPushButton *button, int in_row, int in_column);
     void InitGame();
-    // public slots:
-    //     void handleButtonClick_0_0();
+    void resetGame();
+    void closeAllMainWindows();
 };
 
 

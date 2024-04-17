@@ -19,6 +19,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
+
 QT_BEGIN_NAMESPACE
 
 class MainWindow:public QMainWindow
@@ -37,6 +38,7 @@ public:
     QPushButton *pushButton_0_2;
     QPushButton *pushButton_1_2;
     QPushButton *pushButton_2_2;
+    QPushButton *Connect;
     QLabel *label_turn;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -44,7 +46,7 @@ public:
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName("MainWindow");
+            MainWindow->setObjectName("");
         MainWindow->resize(686, 465);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
@@ -159,6 +161,10 @@ public:
         label_turn->setFont(font);
         label_turn->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
+        Connect = new QPushButton(centralwidget);
+        Connect->setObjectName("Connect");
+        Connect->setGeometry(QRect(50, 410, 93, 28));
+        MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
         menubar->setGeometry(QRect(0, 0, 686, 26));
@@ -170,6 +176,9 @@ public:
         retranslateUi(MainWindow);
 
         QMetaObject::connectSlotsByName(MainWindow);
+
+
+
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
@@ -186,7 +195,10 @@ public:
         pushButton_1_2->setText(QCoreApplication::translate("MainWindow", " ", nullptr));
         pushButton_2_2->setText(QCoreApplication::translate("MainWindow", " ", nullptr));
         label_turn->setText(QCoreApplication::translate("MainWindow", "X turn", nullptr));
+        Connect->setText(QCoreApplication::translate("MainWindow", "PLAY AGAIN", nullptr));
     } // retranslateUi
+
+
 
 };
 

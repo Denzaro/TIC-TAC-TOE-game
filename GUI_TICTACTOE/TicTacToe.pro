@@ -13,11 +13,19 @@ SOURCES += \
     tictactoe_op.cpp
 
 HEADERS += \
+    GUI_LEVEL.h \
+    GUI_MOD.h \
     main.h \
+    option.h \
+    result_tictactoe.h \
     tictactoe_op.h \
     tictactoe_ui.h \
 
 FORMS += \
+    GUI_LEVEL.ui \
+    GUI_MOD.ui \
+    option.ui \
+    result_tictactoe.ui \
     tictactoe_op.ui
 
 # Default rules for deployment.

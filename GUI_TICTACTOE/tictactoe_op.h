@@ -20,12 +20,12 @@ struct pair_hash {
 /*---Unordered map------------------------------*/
 extern std::unordered_map<std::pair<uint8_t, uint8_t>, int, pair_hash> ID;
 /*-------------Enum for mode-------------------*/
-enum MODE{
+typedef enum MODE{
     HUMANMODE,
     EASYMODE,
     MEDIUMMODE,
     HARDMODE,
-};
+}modeOfGame;
 /*---------Player class-----------------------*/
 class Players
 {
