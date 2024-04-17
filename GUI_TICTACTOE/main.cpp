@@ -146,7 +146,6 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
     if(turn%2!=0 && !CheckWin() && turn<9)
     {
         index = BestMove(board);
-        game_ui.label->setText(QString::number(index));
         int r = index/3;
         int c = index%3;
         random = std::make_pair(r,c);
