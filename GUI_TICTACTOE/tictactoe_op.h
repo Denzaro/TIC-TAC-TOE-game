@@ -20,6 +20,12 @@ struct pair_hash {
 /*---Unordered map------------------------------*/
 extern std::unordered_map<std::pair<uint8_t, uint8_t>, int, pair_hash> ID;
 /*-------------Enum for mode-------------------*/
+enum MODE{
+    HUMANMODE,
+    EASYMODE,
+    MEDIUMMODE,
+    HARDMODE,
+};
 /*---------Player class-----------------------*/
 class Players
 {
@@ -45,8 +51,8 @@ class Rules:public Players
 public:
     Rules(int var):Players(var){}
     bool CheckWin();
-    int MiniMax(char board[][3],int depth, bool isAI);
-    int BestMove(char board[][3]);
+    int MiniMax(char board[][3],int depth, bool isAI,int mode);
+    int BestMove(char board[][3], int mode);
 };
 
 #endif

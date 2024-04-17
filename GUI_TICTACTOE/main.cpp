@@ -62,8 +62,6 @@ void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_
     if(turn==9 && !CheckWin())
     {
         game_ui.label_turn->setText(QString("Fking Draw!"));
-        if(!CheckWin())
-        game_ui.label->setText(QString("Checkpoint"));
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
@@ -139,13 +137,11 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
     if(turn==9 && !CheckWin())
     {
         game_ui.label_turn->setText(QString("Fking Draw!"));
-        if(!CheckWin())
-        game_ui.label->setText(QString("Checkpoint"));
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
     {
-        index = BestMove(board);
+        index = BestMove(board,0);
         int r = index/3;
         int c = index%3;
         random = std::make_pair(r,c);
@@ -182,6 +178,81 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
             }
     }
 }
+
+void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, int in_column)
+{
+    row = in_row;
+    column = in_column;
+    board[row][column] = play;
+    if(play=='X')
+        button->setText(QString(play));
+    else
+        button->setText(QString(play));
+    /*-------------Check win------------------*/
+    if(CheckWin())
+    {
+        game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+        game_ui.pushButton_0_0->setEnabled(false);
+        game_ui.pushButton_0_1->setEnabled(false);
+        game_ui.pushButton_0_2->setEnabled(false);
+        game_ui.pushButton_1_0->setEnabled(false);
+        game_ui.pushButton_1_1->setEnabled(false);
+        game_ui.pushButton_1_2->setEnabled(false);
+        game_ui.pushButton_2_0->setEnabled(false);
+        game_ui.pushButton_2_1->setEnabled(false);
+        game_ui.pushButton_2_2->setEnabled(false);
+    }
+    turn++;
+    play = (play=='X')?'O':'X';
+    button->setEnabled(false);
+    /*-----------------Check Draw here-----------------*/
+    if(turn==9 && !CheckWin())
+    {
+        game_ui.label_turn->setText(QString("Fking Draw!"));
+    }
+    /*-----------------Bot operation here--------------*/
+    if(turn%2!=0 && !CheckWin() && turn<9)
+    {
+        index = BestMove(board,3);
+        int r = index/3;
+        int c = index%3;
+        random = std::make_pair(r,c);
+
+            switch(ID[random])
+            {
+                case 0:
+                    game_ui.pushButton_0_0->click();
+                    break;
+                case 1:
+                    game_ui.pushButton_0_1->click();
+                    break;
+                case 2:
+                    game_ui.pushButton_0_2->click();
+                    break;
+                case 3:
+                    game_ui.pushButton_1_0->click();
+                    break;
+                case 4:
+                    game_ui.pushButton_1_1->click();
+                    break;
+                case 5:
+                    game_ui.pushButton_1_2->click();
+                    break;
+                case 6:
+                    game_ui.pushButton_2_0->click();
+                    break;
+                case 7:
+                    game_ui.pushButton_2_1->click();
+                    break;
+                case 8:
+                    game_ui.pushButton_2_2->click();
+                    break;
+            }
+    }
+}
+
+
+
 
 // void GameInterface::handleButtonClick_0_0()
 // {

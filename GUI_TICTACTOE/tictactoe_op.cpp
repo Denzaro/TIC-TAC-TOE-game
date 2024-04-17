@@ -33,7 +33,7 @@ std::unordered_map<std::pair<uint8_t, uint8_t>, int, pair_hash> ID =
         {{2, 2}, 8},
 };
 
-int Rules::MiniMax(char board[3][3],int depth, bool isAI)
+int Rules::MiniMax(char board[3][3],int depth, bool isAI, int mode)
 {
     int score = 0;
     int bestScore = 0;
@@ -47,7 +47,7 @@ int Rules::MiniMax(char board[3][3],int depth, bool isAI)
     }
     else
     {
-        if(depth<9)
+        if(depth<9-mode)
         {
             if(isAI==true)
             {
@@ -58,7 +58,7 @@ int Rules::MiniMax(char board[3][3],int depth, bool isAI)
                         if(board[i][j]==' ')
                         {
                             board[i][j] = COMPUTERMOVE;
-                            score = MiniMax(board,depth+1,false);
+                            score = MiniMax(board,depth+1,false,mode);
                             board[i][j]=' ';
                             if(score>bestScore)
                                 bestScore = score;
@@ -75,7 +75,7 @@ int Rules::MiniMax(char board[3][3],int depth, bool isAI)
                         if(board[i][j]==' ')
                         {
                             board[i][j]= HUMANMOVE;
-                            score = MiniMax(board,depth+1,true);
+                            score = MiniMax(board,depth+1,true,mode);
                             board[i][j]=' ';
                             if(score<bestScore)
                                 bestScore = score;
@@ -90,7 +90,7 @@ int Rules::MiniMax(char board[3][3],int depth, bool isAI)
     return 0;
 }
 
-int Rules::BestMove(char board[3][3])
+int Rules::BestMove(char board[3][3],int mode)
 {
     int temp_row=-1;
     int temp_column=-1;
@@ -102,7 +102,7 @@ int Rules::BestMove(char board[3][3])
            if(board[i][j]==' ')
            {
                 board[i][j]=COMPUTERMOVE;
-                score=MiniMax(board,turn+1,false);
+                score=MiniMax(board,turn+1,false,mode);
                 board[i][j]=' ';
                 if(score>bestScore)
                 {
