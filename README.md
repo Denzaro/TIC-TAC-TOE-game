@@ -22,7 +22,7 @@
 ###Undone tasks:
     - Linking GUIs together - Nhan  
     - Decorate GUIs - Nhan  
-    - Run .exe file successfully - Nghia  
+    - Run .exe file successfully - Dat  
     - Flowchart for algorithms - Nghia  
     - Flowchart for GUI - Nhan  
     - PowerPoint - Nhi  
