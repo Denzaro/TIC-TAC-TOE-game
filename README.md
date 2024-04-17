@@ -13,21 +13,20 @@
 ###GUI - QT CREATOR:  
     - Use QT designer to design GUI  
     - Coding in Qt Creator.  
-    - Creating classes: Players, Rules, Interfaces (Reducing some unused methods) .  
+    - Creating classes: Players, Rules, Interfaces (Reducing some unused methods),...    
     - Done in running basic GUI.  
+    - 4 MODE: 2P, 1P->HARD,EASY,MEDIUM.  
+    - Play again.  
+    - Go to mode.  
 
 ###Undone tasks:
-    - Create a button -> pop-up GUI to choose whether if user want to restart or comeback GUI MOD -Dat:  
-        +Firstly, Test with 3 UI as below:  
-        ++![alt text](./Image/GUI_TEST_OPTION.png)  
-        +When choose  Play again, clear on labels and clear all value in 2 dimension array.    
-    - Create a pop-up GUI to inform result of the game. -Dat  
-    - Create a GUI to choose mod (P Vs Bot, P vs P). -Nhi:  
-        + Firstly, Test with 2 .ui files and test as the image below.    
-        +![alt text](./Image/GUI_TEST.png)  
-    - Code for Bot. -Nghia  
-    - Decorate GUI (Draw in paper first). -Nhan  
-    - Run with .exe file.   
+    - Linking GUIs together - Nhan  
+    - Decorate GUIs - Nhan  
+    - Run .exe file successfully - Nghia  
+    - Flowchart for algorithms - Nghia  
+    - Flowchart for GUI - Nhan  
+    - PowerPoint - Nhi  
+    - Word - Nhi  
 
 ###About GIT  
     - Follow setup on websites: https://phoenixnap.com/kb/how-to-install-git-windows  
