@@ -10,18 +10,27 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    mainwindow.cpp \
-    play.cpp
+    GUI_LEVEL.cpp \
+    GUI_MAIN.cpp \
+    GUI_MAIN_EASY.cpp \
+    GUI_MAIN_HARD.cpp \
+    GUI_MOD.cpp \
+    main.cpp
 
 HEADERS += \
-    mainwindow.h \
-    play.h
+    GUI_LEVEL.h \
+    GUI_MAIN.h \
+    GUI_MAIN_EASY.h \
+    GUI_MAIN_HARD.h \
+    GUI_MOD.h \
+    main.h
 
 FORMS += \
-    mainwindow.ui \
-    play.ui
-
+    GUI_LEVEL.ui \
+    GUI_MAIN.ui \
+    GUI_MAIN_EASY.ui \
+    GUI_MAIN_HARD.ui \
+    GUI_MOD.ui
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

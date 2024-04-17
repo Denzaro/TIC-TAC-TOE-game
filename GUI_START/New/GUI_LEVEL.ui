@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>581</width>
-    <height>433</height>
+    <width>580</width>
+    <height>384</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,64 +17,65 @@
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="Sound_2">
+   <widget class="QPushButton" name="Easy">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>220</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Stencil</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>EASY</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Hard">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>290</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Stencil</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(85, 170, 255);</string>
+    </property>
+    <property name="text">
+     <string>HARD</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sound_2">
     <property name="geometry">
      <rect>
       <x>530</x>
       <y>10</y>
       <width>41</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image:url(:/myimage/image/sound_on.png)i;
-background-color: rgb(76, 199, 255);
-</string>
+     <string notr="true">background-color: rgb(85, 170, 255);
+border-image: url(:/myimage/image/sound_on.png);</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="A">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>511</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 85, 255);</string>
-    </property>
-    <property name="text">
-     <string>A</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="B">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>511</width>
-      <height>271</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>20</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 85, 255);</string>
-    </property>
-    <property name="text">
-     <string>B</string>
     </property>
    </widget>
   </widget>
@@ -83,7 +84,7 @@ background-color: rgb(76, 199, 255);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>581</width>
+     <width>580</width>
      <height>18</height>
     </rect>
    </property>
