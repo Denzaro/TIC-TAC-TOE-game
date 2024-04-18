@@ -68,7 +68,7 @@ void GameInterface::closeAllMainWindows() {
         }
     }
 
-    void GameInterface::resetGame() {
+void GameInterface::resetGame() {
 
         // Clear the game board
         for (int i = 0; i < 3; ++i) {
