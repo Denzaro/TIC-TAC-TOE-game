@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'GUI_MOD.ui'
+** Form generated from reading UI file 'GUI_MODE.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_GUI_MOD_H
-#define UI_GUI_MOD_H
+#ifndef UI_GUI_MODE_H
+#define UI_GUI_MODE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -148,4 +148,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // UI_GUI_MOD_H
+#endif // UI_GUI_MODE_H

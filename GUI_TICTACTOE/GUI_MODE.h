@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'GUI_MOD.ui'
+** Form generated from reading UI file 'GUI_MODE.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_GUI_MOD_H
-#define UI_GUI_MOD_H
+#ifndef GUI_MODE_H
+#define GUI_MODE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -19,8 +19,7 @@
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
-
-class Ui_MainWindow
+class ModeGame: public QMainWindow
 {
 public:
     QWidget *centralwidget;
@@ -126,7 +125,8 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "TicTacToe Mode", nullptr));
+        MainWindow->setWindowIcon(QIcon(":/myimage/image/background.png"));
         title->setText(QString());
         label_2->setText(QString());
         label_3->setText(QString());
@@ -142,10 +142,6 @@ public:
 
 };
 
-namespace Ui {
-    class MainWindow: public Ui_MainWindow {};
-} // namespace Ui
-
 QT_END_NAMESPACE
 
-#endif // UI_GUI_MOD_H
+#endif // GUI_MODE_H

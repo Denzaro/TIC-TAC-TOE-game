@@ -4,10 +4,11 @@
 #include "tictactoe_ui.h"
 #include "tictactoe_op.h"
 #include "GUI_LEVEL.h"
-#include "GUI_MOD.h"
+#include "GUI_MODE.h"
 #include "option.h"
 #include "result_tictactoe.h"
 #include <QObject>
+#include <QTimer>
 
 
 class GUI_option :public QObject
@@ -31,8 +32,6 @@ private:
     Result result;
 
 };
-
-
 
 
 class guiStart: public QObject
@@ -90,7 +89,7 @@ public:
             connect(game_ui.pushButton_2_0, &QPushButton::clicked, this, [this]{handleButtonClickBot(game_ui.pushButton_2_0,2,0);});
             connect(game_ui.pushButton_2_1, &QPushButton::clicked, this, [this]{handleButtonClickBot(game_ui.pushButton_2_1,2,1);});
             connect(game_ui.pushButton_2_2, &QPushButton::clicked, this, [this]{handleButtonClickBot(game_ui.pushButton_2_2,2,2);});
-            game_ui.label_turn->setText(QString(" "));
+            //game_ui.label_turn->setText(QString(" "));
             std::srand(time(0));
             break;
 
@@ -129,6 +128,8 @@ public:
     void handleButtonClickBot(QPushButton *button, int in_row, int in_column);
     void handleButtonClickHardBot(QPushButton *button, int in_row, int in_column);
     void handleButtonClickMediumBot(QPushButton *button, int in_row, int in_column);
+    void disablePlayButton();
+    void enablePlayButton();
     void InitGame();
     void resetGame();
     void closeAllMainWindows();

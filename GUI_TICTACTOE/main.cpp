@@ -22,9 +22,8 @@ void GUI_option::show_GUI_Option(){
     });
 }
 
-
 //hàm hiển thị kết quả người chiến thắng sau khi
-void GUI_Result::show_result(const QString &win,const QString & lose) {
+void GUI_Result::show_result(const QString &win,const QString & loss) {
     // Tạo một đối tượng QMainWindow để chứa giao diện kết quả
     QMainWindow *resultWindow = new QMainWindow;
 
@@ -33,9 +32,8 @@ void GUI_Result::show_result(const QString &win,const QString & lose) {
     resultUi->setupUi(resultWindow); // Thiết lập giao diện của Result vào QMainWindow
 
     // Cập nhật nội dung của các thành phần trong giao diện Result
-    resultUi->result->setText("RESULT GAME");
     resultUi->win->setText(win);    // Sử dụng win để hiển thị người chiến thắng
-    resultUi->loss->setText(lose);
+    //resultUi->loss->setText(lose);
     // Hiển thị cửa sổ giao diện kết quả
     resultWindow->show();
 
@@ -81,9 +79,12 @@ void guiLevel::showUILevel(){
 
 
     //game initial with medium mode
-    /*
-        code for medium mode
-    */
+    GameInterface *gameUI_Medium = new GameInterface(0,nullptr,0,MEDIUMMODE);
+    connect(level->Medium, &QPushButton::clicked, [=]() {
+        oldMode = EASYMODE;
+        gameUI_Medium->InitGame();
+        guiLevel_window->close(); // Đóng cửa sổ tùy chọn sau khi nhấn nút mode
+    });
 
 
     //game initial with hard mode
@@ -101,7 +102,7 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
     row = in_row;
     column = in_column;
     board[row][column] = play;
-    game_ui.label_turn->setText(QString("%1 turn").arg(QString(play)));
+
     if(play=='X')
         button->setText(QString(play));
     else
@@ -109,11 +110,9 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
     if(CheckWin())
     {
         QString win = QString("Player %1 WINS").arg(QString(play));
-        QString lose =QString("Player %1 LOSES").arg(play=='X'?'O':'X');
         // Tạo một đối tượng GUI_Result để hiển thị kết quả
         GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,lose); // Truyền kết quả vào hàm show_result
-        game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+        guiResult->show_result(win,NULL); // Truyền kết quả vào hàm show_result
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -125,11 +124,16 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
         game_ui.pushButton_2_2->setEnabled(false);
     }
     play = (play=='X')?'O':'X';
+    game_ui.Player2_sym_2->setText(QString(play));
     turn++;
     /*Each time press button, disable that button*/
     button->setEnabled(false);
-    if(turn==9 && !CheckWin())
-        game_ui.label_turn->setText(QString("Fking Draw!"));
+    if(turn==9 && !CheckWin()){
+        QString draw = QString("DRAWWWW!");
+        GUI_Result *guiResult = new GUI_Result;
+        guiResult->show_result(draw,NULL);
+    }
+
 }
 
 void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_column)
@@ -145,11 +149,9 @@ void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_
     if(CheckWin())
     {
         QString win = QString("Player %1 WINS").arg(QString(play));
-        QString lose =QString("Player %1 LOSES").arg(play=='X'?'O':'X');
         // Tạo một đối tượng GUI_Result để hiển thị kết quả
         GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,lose); // Truyền kết quả vào hàm show_result
-        game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+        guiResult->show_result(win,NULL); // Truyền kết quả vào hàm show_result
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -162,54 +164,65 @@ void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_
     }
     turn++;
     play = (play=='X')?'O':'X';
+    game_ui.Player2_sym_2->setText(QString(play));
     button->setEnabled(false);
     /*-----------------Check Draw here-----------------*/
     if(turn==9 && !CheckWin())
     {
-        game_ui.label_turn->setText(QString("Fking Draw!"));
+        QString draw = QString("DRAWWWW!");
+        GUI_Result *guiResult = new GUI_Result;
+        guiResult->show_result(draw,NULL);
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
     {
         /*Generate random unquie index*/
-        while(board[random_row][random_column]!=' ')
-        {
-            random_row = rand()%3;
-            random_column = rand()%3;
-        }
-        random = std::make_pair(random_row,random_column);
+        QTimer *botTimer = new QTimer(this);
+        disablePlayButton();
+        connect(botTimer, &QTimer::timeout, this, [=](){
+        enablePlayButton();
+            while(board[random_row][random_column]!=' ')
+            {
+                random_row = rand()%3;
+                random_column = rand()%3;
+            }
+            random = std::make_pair(random_row,random_column);
 
             switch(ID[random])
             {
-                case 0:
-                    game_ui.pushButton_0_0->click();
-                    break;
-                case 1:
-                    game_ui.pushButton_0_1->click();
-                    break;
-                case 2:
-                    game_ui.pushButton_0_2->click();
-                    break;
-                case 3:
-                    game_ui.pushButton_1_0->click();
-                    break;
-                case 4:
-                    game_ui.pushButton_1_1->click();
-                    break;
-                case 5:
-                    game_ui.pushButton_1_2->click();
-                    break;
-                case 6:
-                    game_ui.pushButton_2_0->click();
-                    break;
-                case 7:
-                    game_ui.pushButton_2_1->click();
-                    break;
-                case 8:
-                    game_ui.pushButton_2_2->click();
-                    break;
+            case 0:
+                game_ui.pushButton_0_0->click();
+                break;
+            case 1:
+                game_ui.pushButton_0_1->click();
+                break;
+            case 2:
+                game_ui.pushButton_0_2->click();
+                break;
+            case 3:
+                game_ui.pushButton_1_0->click();
+                break;
+            case 4:
+                game_ui.pushButton_1_1->click();
+                break;
+            case 5:
+                game_ui.pushButton_1_2->click();
+                break;
+            case 6:
+                game_ui.pushButton_2_0->click();
+                break;
+            case 7:
+                game_ui.pushButton_2_1->click();
+                break;
+            case 8:
+                game_ui.pushButton_2_2->click();
+                break;
             }
+            botTimer->deleteLater();
+        });
+        botTimer->start(500);
     }
+
 }
 
 void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, int in_column)
@@ -225,11 +238,9 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
     if(CheckWin())
     {
         QString win = QString("Player %1 WINS").arg(QString(play));
-        QString lose =QString("Player %1 LOSES").arg(play=='X'?'O':'X');
         // Tạo một đối tượng GUI_Result để hiển thị kết quả
         GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,lose); // Truyền kết quả vào hàm show_result
-        game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+        guiResult->show_result(win,NULL); // Truyền kết quả vào hàm show_result
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -242,15 +253,22 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
     }
     turn++;
     play = (play=='X')?'O':'X';
+    game_ui.Player2_sym_2->setText(QString(play));
     button->setEnabled(false);
     /*-----------------Check Draw here-----------------*/
     if(turn==9 && !CheckWin())
     {
-        game_ui.label_turn->setText(QString("Fking Draw!"));
+        QString draw = QString("DRAWWWW!");
+        GUI_Result *guiResult = new GUI_Result;
+        guiResult->show_result(draw,NULL);
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
     {
+        QTimer *botTimer = new QTimer(this);
+        disablePlayButton();
+        connect(botTimer, &QTimer::timeout, this, [=](){
+        enablePlayButton();
         index = BestMove(board,0);
         int r = index/3;
         int c = index%3;
@@ -286,6 +304,9 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
                     game_ui.pushButton_2_2->click();
                     break;
             }
+            botTimer->deleteLater();
+        });
+        botTimer->start(500);
     }
 }
 
@@ -301,7 +322,11 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
     /*-------------Check win------------------*/
     if(CheckWin())
     {
-        game_ui.label_turn->setText(QString("The winner is: %1").arg(QString(play)));
+
+        QString win = QString("Player %1 WINS").arg(QString(play));
+        // Tạo một đối tượng GUI_Result để hiển thị kết quả
+        GUI_Result *guiResult = new GUI_Result;
+        guiResult->show_result(win,NULL); // Truyền kết quả vào hàm show_result
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -314,20 +339,26 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
     }
     turn++;
     play = (play=='X')?'O':'X';
+    game_ui.Player2_sym_2->setText(QString(play));
     button->setEnabled(false);
     /*-----------------Check Draw here-----------------*/
     if(turn==9 && !CheckWin())
     {
-        game_ui.label_turn->setText(QString("Fking Draw!"));
+        QString draw = QString("DRAWWWW!");
+        GUI_Result *guiResult = new GUI_Result;
+        guiResult->show_result(draw,NULL);
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
     {
+        QTimer *botTimer = new QTimer(this);
+        disablePlayButton();
+        connect(botTimer, &QTimer::timeout, this, [=](){
+        enablePlayButton();
         index = BestMove(board,3);
         int r = index/3;
         int c = index%3;
         random = std::make_pair(r,c);
-
             switch(ID[random])
             {
                 case 0:
@@ -358,6 +389,9 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
                     game_ui.pushButton_2_2->click();
                     break;
             }
+                botTimer->deleteLater();
+        });
+        botTimer->start(500);
     }
 }
 
@@ -389,14 +423,70 @@ void GameInterface::resetGame() {
         button->setEnabled(true);
         button->setText(""); // Clear button text
     }
-
     // Reset game turn
     turn = 0;
-    game_ui.label_turn->setText(QString(" "));
+    //game_ui.label_turn->setText(QString(" "));
     game_ui.Connect->setText("PLAY AGAIN");
     game_ui.show();
 }
 
+
+void GameInterface::enablePlayButton()
+{
+    for(int i=0; i<9; i++)
+    {
+        int row = i/3;
+        int column = i%3;
+        std::pair<uint8_t,uint8_t> index;
+        if(board[row][column]==' ')
+        {
+            index = std::make_pair(row,column);
+            switch(ID[index])
+            {
+            case 0:
+                game_ui.pushButton_0_0->setEnabled(true);
+                break;
+            case 1:
+                game_ui.pushButton_0_1->setEnabled(true);
+                break;
+            case 2:
+                game_ui.pushButton_0_2->setEnabled(true);
+                break;
+            case 3:
+                game_ui.pushButton_1_0->setEnabled(true);
+                break;
+            case 4:
+                game_ui.pushButton_1_1->setEnabled(true);
+                break;
+            case 5:
+                game_ui.pushButton_1_2->setEnabled(true);
+                break;
+            case 6:
+                game_ui.pushButton_2_0->setEnabled(true);
+                break;
+            case 7:
+                game_ui.pushButton_2_1->setEnabled(true);
+                break;
+            case 8:
+                game_ui.pushButton_2_2->setEnabled(true);
+                break;
+            }
+        }
+    }
+}
+
+void GameInterface::disablePlayButton()
+{
+    game_ui.pushButton_0_0->setEnabled(false);
+    game_ui.pushButton_0_1->setEnabled(false);
+    game_ui.pushButton_0_2->setEnabled(false);
+    game_ui.pushButton_1_0->setEnabled(false);
+    game_ui.pushButton_1_1->setEnabled(false);
+    game_ui.pushButton_1_2->setEnabled(false);
+    game_ui.pushButton_2_0->setEnabled(false);
+    game_ui.pushButton_2_1->setEnabled(false);
+    game_ui.pushButton_2_2->setEnabled(false);
+}
 
 void GameInterface::InitGame()
 {
@@ -406,8 +496,6 @@ void GameInterface::InitGame()
 
 int main(int agrc, char *agrv[])
 {
-    // GameInterface game(agrc,agrv);
-    // game.InitGame();
     QApplication app(agrc, agrv);
     guiStart guiBegin;
     guiBegin.showUIMode();

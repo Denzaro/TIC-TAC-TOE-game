@@ -6,8 +6,8 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef TICTACTOE_UI_H
-#define TICTACTOE_UI_H
+#ifndef UI_TICTACTOE_UI_H
+#define UI_TICTACTOE_UI_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class MainWindow:public QMainWindow
+class Ui_TicTacToe
 {
 public:
     QWidget *centralwidget;
@@ -349,7 +349,7 @@ public:
 
     void retranslateUi(QMainWindow *TicTacToe)
     {
-        TicTacToe->setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe", nullptr));
+        TicTacToe->setWindowTitle(QCoreApplication::translate("TicTacToe", "MainWindow", nullptr));
         pushButton_2_0->setText(QString());
         pushButton_0_0->setText(QString());
         pushButton_2_1->setText(QString());
@@ -366,11 +366,15 @@ public:
         player1_label->setText(QCoreApplication::translate("TicTacToe", "PLAYER 1: ", nullptr));
         player2_label->setText(QCoreApplication::translate("TicTacToe", "PLAYER 2:", nullptr));
         player2_label_2->setText(QCoreApplication::translate("TicTacToe", "TURN:", nullptr));
-        Player2_sym_2->setText(QCoreApplication::translate("TicTacToe", "X", nullptr));
+        Player2_sym_2->setText(QCoreApplication::translate("TicTacToe", "O", nullptr));
     } // retranslateUi
+
 };
 
+namespace Ui {
+    class TicTacToe: public Ui_TicTacToe {};
+} // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // TICTACTOE_UI_H
+#endif // UI_TICTACTOE_UI_H

@@ -14,7 +14,7 @@ SOURCES += \
 
 HEADERS += \
     GUI_LEVEL.h \
-    GUI_MOD.h \
+    GUI_MODE.h \
     main.h \
     option.h \
     result_tictactoe.h \
@@ -23,12 +23,33 @@ HEADERS += \
 
 FORMS += \
     GUI_LEVEL.ui \
-    GUI_MOD.ui \
+    GUI_MODE.ui \
     option.ui \
     result_tictactoe.ui \
-    tictactoe_op.ui
+    tictactoe_ui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    image.qrc
+
+DISTFILES += \
+    image/Menu.png \
+    image/O.png \
+    image/Result.png \
+    image/Title.png \
+    image/X.png \
+    image/background.png \
+    image/background3.jpg \
+    image/cup-1.png \
+    image/cup-star.png \
+    image/people.png \
+    image/person.png \
+    image/retry.png \
+    image/shadow.png \
+    image/sound_off.png \
+    image/sound_on.png \
+    image/table.png
