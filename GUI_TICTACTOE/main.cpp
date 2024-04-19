@@ -2,13 +2,18 @@
 
 modeOfGame oldMode;
 
+void GUI_option::CloseWindow(QMainWindow *window)
+{
+    window->close();
+}
+
 void GameInterface::handleButtonClickOption(QPushButton *button)
 {
-    game_ui.close();
+    option1->show_GUI_Option(&game_ui);
 }
 
 
-void GUI_option::show_GUI_Option(){
+void GUI_option::show_GUI_Option(QMainWindow *window){
     QMainWindow *option_Window = new QMainWindow;
     Option *optionUI = new Option;
     optionUI->setupUi(option_Window); // Thiết lập giao diện của Result vào QMainWindow
@@ -22,12 +27,13 @@ void GUI_option::show_GUI_Option(){
     //xử lý nút play agian
     GameInterface *gameAgain = new GameInterface(0,nullptr,0,oldMode);
     connect(optionUI->playagain, &QPushButton::clicked, [=]() {
+        window->close();
         gameAgain->resetGame();
         option_Window->close(); // Đóng cửa sổ tùy chọn sau khi nhấn nút mode
     });
 }
 
-//hàm hiển thị kết quả người chiến thắng sau khi
+//hàm hiển thị kết quả người chiến thắng sau khi                        q4567
 void GUI_Result::show_result(const QString &win,const QString & loss) {
     // Tạo một đối tượng QMainWindow để chứa giao diện kết quả
     QMainWindow *resultWindow = new QMainWindow;
