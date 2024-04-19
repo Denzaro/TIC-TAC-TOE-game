@@ -35,8 +35,8 @@ public:
     QLabel *label_8;
     QPushButton *Medium;
     QPushButton *Hard;
-    QLabel *label_9;
-    QPushButton *sound;
+    QLabel *label_10;
+    QPushButton *sound_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -67,7 +67,7 @@ public:
         label_4->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/X.png);"));
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(40, 20, 61, 51));
+        label_5->setGeometry(QRect(70, 40, 61, 51));
         label_5->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/O.png);"));
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
@@ -114,18 +114,19 @@ public:
         Hard->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
 "color: rgb(255,250,205);\n"
 "border-radius: 10px;"));
-        label_9 = new QLabel(centralwidget);
-        label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(520, 0, 51, 31));
-        label_9->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/shadow.png);\n"
+        label_10 = new QLabel(centralwidget);
+        label_10->setObjectName("label_10");
+        label_10->setGeometry(QRect(10, 10, 51, 31));
+        label_10->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/shadow.png);\n"
 "border-image: url(:/myimage/image/shadow.png);\n"
 "border-radius: 10px;"));
-        sound = new QPushButton(centralwidget);
-        sound->setObjectName("sound");
-        sound->setGeometry(QRect(530, 0, 41, 31));
-        sound->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
-"image:url(:/myimage/image/sound_on.png);\n"
-"border-radius: 10px;"));
+        sound_5 = new QPushButton(centralwidget);
+        sound_5->setObjectName("sound_5");
+        sound_5->setGeometry(QRect(10, 10, 41, 31));
+        sound_5->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
+"image: url(:/myimage/image/back.png);\n"
+"border-radius: 10px;\n"
+""));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -154,8 +155,8 @@ public:
         label_8->setText(QString());
         Medium->setText(QCoreApplication::translate("MainWindow", "MEDIUM", nullptr));
         Hard->setText(QCoreApplication::translate("MainWindow", "HARD", nullptr));
-        label_9->setText(QString());
-        sound->setText(QString());
+        label_10->setText(QString());
+        sound_5->setText(QString());
     } // retranslateUi
 
 };

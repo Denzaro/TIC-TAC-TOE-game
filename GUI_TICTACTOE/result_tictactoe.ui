@@ -134,10 +134,10 @@ border-image: url(:/myimage/image/cup-1.png);</string>
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>10</x>
       <y>0</y>
       <width>51</width>
       <height>31</height>
@@ -145,18 +145,16 @@ border-image: url(:/myimage/image/cup-1.png);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">border-image: url(:/myimage/image/shadow.png);
-border-image: url(:/myimage/image/shadow.png);
-border-image: url(:/myimage/image/shadow.png);
 border-radius: 10px;</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="sound">
+   <widget class="QPushButton" name="back_btn">
     <property name="geometry">
      <rect>
-      <x>530</x>
+      <x>10</x>
       <y>0</y>
       <width>41</width>
       <height>31</height>
@@ -164,8 +162,9 @@ border-radius: 10px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(32,178,170);
+image: url(:/myimage/image/back.png);
 border-radius: 10px;
-image: url(:/myimage/image/sound_on.png);</string>
+</string>
     </property>
     <property name="text">
      <string/>

@@ -21,7 +21,6 @@
 QT_BEGIN_NAMESPACE
 
 class Option: public QMainWindow
-
 {
 public:
     QWidget *centralwidget;
@@ -34,6 +33,8 @@ public:
     QLabel *label;
     QLabel *label_9;
     QPushButton *sound_3;
+    QLabel *label_10;
+    QPushButton *back_btn;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -62,7 +63,7 @@ public:
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(50, 80, 41, 41));
-        label_4->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/retry.png);\n"
+        label_4->setStyleSheet(QString::fromUtf8("image: url(:/myimage/image/retry.png);\n"
 "background-color:rgb(255,250,205);"));
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
@@ -99,10 +100,23 @@ public:
 "image:url(:/myimage/image/sound_on.png);\n"
 "border-radius: 10px;\n"
 ""));
+        label_10 = new QLabel(centralwidget);
+        label_10->setObjectName("label_10");
+        label_10->setGeometry(QRect(10, 0, 51, 31));
+        label_10->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/shadow.png);\n"
+"border-image: url(:/myimage/image/shadow.png);\n"
+"border-radius: 10px;"));
+        back_btn = new QPushButton(centralwidget);
+        back_btn->setObjectName("back_btn");
+        back_btn->setGeometry(QRect(10, 0, 41, 31));
+        back_btn->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
+"image: url(:/myimage/image/back.png);\n"
+"border-radius: 10px;\n"
+""));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 580, 17));
+        menubar->setGeometry(QRect(0, 0, 580, 18));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -115,7 +129,8 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Option", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Options", nullptr));
+        MainWindow->setWindowIcon(QIcon(":/myimage/image/background.png"));
         label_3->setText(QString());
         playagain->setText(QCoreApplication::translate("MainWindow", "             PLAY AGAIN", nullptr));
         label_4->setText(QString());
@@ -125,9 +140,12 @@ public:
         label->setText(QString());
         label_9->setText(QString());
         sound_3->setText(QString());
+        label_10->setText(QString());
+        back_btn->setText(QString());
     } // retranslateUi
 
 };
+
 
 QT_END_NAMESPACE
 

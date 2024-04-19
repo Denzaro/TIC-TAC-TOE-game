@@ -33,8 +33,6 @@ public:
     QPushButton *Bot;
     QLabel *label_7;
     QPushButton *Person;
-    QLabel *label_8;
-    QPushButton *sound_3;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -97,19 +95,6 @@ public:
         Person->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
 "color: rgb(255,250,205);\n"
 "border-radius: 10px;"));
-        label_8 = new QLabel(centralwidget);
-        label_8->setObjectName("label_8");
-        label_8->setGeometry(QRect(520, 0, 51, 31));
-        label_8->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/shadow.png);\n"
-"border-image: url(:/myimage/image/shadow.png);\n"
-"border-radius: 10px;"));
-        sound_3 = new QPushButton(centralwidget);
-        sound_3->setObjectName("sound_3");
-        sound_3->setGeometry(QRect(530, 0, 41, 31));
-        sound_3->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
-"border-radius: 10px;\n"
-"border-image: url(:/myimage/image/sound_on.png);\n"
-""));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -136,8 +121,6 @@ public:
         Bot->setText(QCoreApplication::translate("MainWindow", "1 PLAYER", nullptr));
         label_7->setText(QString());
         Person->setText(QCoreApplication::translate("MainWindow", "2 PLAYERS", nullptr));
-        label_8->setText(QString());
-        sound_3->setText(QString());
     } // retranslateUi
 
 };

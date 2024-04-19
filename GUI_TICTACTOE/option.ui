@@ -67,7 +67,7 @@ border-radius: 10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/myimage/image/retry.png);
+     <string notr="true">image: url(:/myimage/image/retry.png);
 background-color:rgb(255,250,205);</string>
     </property>
     <property name="text">
@@ -186,6 +186,43 @@ border-radius: 10px;
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/myimage/image/shadow.png);
+border-image: url(:/myimage/image/shadow.png);
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sound_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(32,178,170);
+image: url(:/myimage/image/back.png);
+border-radius: 10px;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -193,12 +230,14 @@ border-radius: 10px;
      <x>0</x>
      <y>0</y>
      <width>580</width>
-     <height>17</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
  <connections/>
 </ui>

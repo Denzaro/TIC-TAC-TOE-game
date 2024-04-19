@@ -350,6 +350,7 @@ public:
     void retranslateUi(QMainWindow *TicTacToe)
     {
         TicTacToe->setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe", nullptr));
+        TicTacToe->setWindowIcon(QIcon(":/myimage/image/background.png"));
         pushButton_2_0->setText(QString());
         pushButton_0_0->setText(QString());
         pushButton_2_1->setText(QString());

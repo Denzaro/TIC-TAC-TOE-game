@@ -30,8 +30,8 @@ public:
     QLabel *win;
     QLabel *label_3;
     QLabel *label_4;
-    QLabel *label_9;
-    QPushButton *sound;
+    QLabel *label_10;
+    QPushButton *back_btn;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -84,19 +84,18 @@ public:
         label_4->setGeometry(QRect(330, 90, 41, 41));
         label_4->setStyleSheet(QString::fromUtf8("background-color:rgb(255,250,205);\n"
 "border-image: url(:/myimage/image/cup-1.png);"));
-        label_9 = new QLabel(centralwidget);
-        label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(520, 0, 51, 31));
-        label_9->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/shadow.png);\n"
-"border-image: url(:/myimage/image/shadow.png);\n"
-"border-image: url(:/myimage/image/shadow.png);\n"
+        label_10 = new QLabel(centralwidget);
+        label_10->setObjectName("label_10");
+        label_10->setGeometry(QRect(10, 0, 51, 31));
+        label_10->setStyleSheet(QString::fromUtf8("border-image: url(:/myimage/image/shadow.png);\n"
 "border-radius: 10px;"));
-        sound = new QPushButton(centralwidget);
-        sound->setObjectName("sound");
-        sound->setGeometry(QRect(530, 0, 41, 31));
-        sound->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
+        back_btn = new QPushButton(centralwidget);
+        back_btn->setObjectName("back_btn");
+        back_btn->setGeometry(QRect(10, 0, 41, 31));
+        back_btn->setStyleSheet(QString::fromUtf8("background-color: rgb(32,178,170);\n"
+"image: url(:/myimage/image/back.png);\n"
 "border-radius: 10px;\n"
-"image: url(:/myimage/image/sound_on.png);"));
+""));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -120,8 +119,8 @@ public:
         win->setText(QCoreApplication::translate("MainWindow", "Player 1 (X): WIN", nullptr));
         label_3->setText(QString());
         label_4->setText(QString());
-        label_9->setText(QString());
-        sound->setText(QString());
+        label_10->setText(QString());
+        back_btn->setText(QString());
     } // retranslateUi
 
 };

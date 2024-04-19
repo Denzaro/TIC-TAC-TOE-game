@@ -14,6 +14,11 @@ void GUI_option::show_GUI_Option(QMainWindow *window){
     Option *optionUI = new Option;
     optionUI->setupUi(option_Window); // Thiết lập giao diện của Result vào QMainWindow
     option_Window->show();
+    //back button config
+    connect(optionUI->back_btn, &QPushButton::clicked, [=]() {
+        option_Window->close();
+    });
+
     //cấu hình nút new
     guiStart *modePage = new guiStart;
     connect(optionUI->mode, &QPushButton::clicked, [=]() {
@@ -44,6 +49,10 @@ void GUI_Result::show_result(const QString &win,const QString & loss) {
     //resultUi->loss->setText(lose);
     // Hiển thị cửa sổ giao diện kết quả
     resultWindow->show();
+    //back button config
+    connect(resultUi->back_btn, &QPushButton::clicked, [=]() {
+        resultWindow->close();
+    });
 
 }
 
@@ -75,6 +84,13 @@ void guiLevel::showUILevel(){
     botLevel *level = new botLevel;
     level->setupUi(guiLevel_window);
     guiLevel_window->show();
+
+    //back button config
+    guiStart *guiBegin = new guiStart;
+    connect(level->back_btn,&QPushButton::clicked, [=](){
+        guiLevel_window->close();
+        guiBegin->showUIMode();
+    });
 
     //button configurations
     //game initial with ez mode
@@ -188,7 +204,7 @@ void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_
         QTimer *botTimer = new QTimer(this);
         disablePlayButton();
         connect(botTimer, &QTimer::timeout, this, [=](){
-        enablePlayButton();
+            enablePlayButton();
             while(board[random_row][random_column]!=' ')
             {
                 random_row = rand()%3;
@@ -276,41 +292,41 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
         QTimer *botTimer = new QTimer(this);
         disablePlayButton();
         connect(botTimer, &QTimer::timeout, this, [=](){
-        enablePlayButton();
-        index = BestMove(board,0);
-        int r = index/3;
-        int c = index%3;
-        random = std::make_pair(r,c);
+            enablePlayButton();
+            index = BestMove(board,0);
+            int r = index/3;
+            int c = index%3;
+            random = std::make_pair(r,c);
 
             switch(ID[random])
             {
-                case 0:
-                    game_ui.pushButton_0_0->click();
-                    break;
-                case 1:
-                    game_ui.pushButton_0_1->click();
-                    break;
-                case 2:
-                    game_ui.pushButton_0_2->click();
-                    break;
-                case 3:
-                    game_ui.pushButton_1_0->click();
-                    break;
-                case 4:
-                    game_ui.pushButton_1_1->click();
-                    break;
-                case 5:
-                    game_ui.pushButton_1_2->click();
-                    break;
-                case 6:
-                    game_ui.pushButton_2_0->click();
-                    break;
-                case 7:
-                    game_ui.pushButton_2_1->click();
-                    break;
-                case 8:
-                    game_ui.pushButton_2_2->click();
-                    break;
+            case 0:
+                game_ui.pushButton_0_0->click();
+                break;
+            case 1:
+                game_ui.pushButton_0_1->click();
+                break;
+            case 2:
+                game_ui.pushButton_0_2->click();
+                break;
+            case 3:
+                game_ui.pushButton_1_0->click();
+                break;
+            case 4:
+                game_ui.pushButton_1_1->click();
+                break;
+            case 5:
+                game_ui.pushButton_1_2->click();
+                break;
+            case 6:
+                game_ui.pushButton_2_0->click();
+                break;
+            case 7:
+                game_ui.pushButton_2_1->click();
+                break;
+            case 8:
+                game_ui.pushButton_2_2->click();
+                break;
             }
             botTimer->deleteLater();
         });
@@ -362,42 +378,42 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
         QTimer *botTimer = new QTimer(this);
         disablePlayButton();
         connect(botTimer, &QTimer::timeout, this, [=](){
-        enablePlayButton();
-        index = BestMove(board,3);
-        int r = index/3;
-        int c = index%3;
-        random = std::make_pair(r,c);
+            enablePlayButton();
+            index = BestMove(board,3);
+            int r = index/3;
+            int c = index%3;
+            random = std::make_pair(r,c);
             switch(ID[random])
             {
-                case 0:
-                    game_ui.pushButton_0_0->click();
-                    break;
-                case 1:
-                    game_ui.pushButton_0_1->click();
-                    break;
-                case 2:
-                    game_ui.pushButton_0_2->click();
-                    break;
-                case 3:
-                    game_ui.pushButton_1_0->click();
-                    break;
-                case 4:
-                    game_ui.pushButton_1_1->click();
-                    break;
-                case 5:
-                    game_ui.pushButton_1_2->click();
-                    break;
-                case 6:
-                    game_ui.pushButton_2_0->click();
-                    break;
-                case 7:
-                    game_ui.pushButton_2_1->click();
-                    break;
-                case 8:
-                    game_ui.pushButton_2_2->click();
-                    break;
+            case 0:
+                game_ui.pushButton_0_0->click();
+                break;
+            case 1:
+                game_ui.pushButton_0_1->click();
+                break;
+            case 2:
+                game_ui.pushButton_0_2->click();
+                break;
+            case 3:
+                game_ui.pushButton_1_0->click();
+                break;
+            case 4:
+                game_ui.pushButton_1_1->click();
+                break;
+            case 5:
+                game_ui.pushButton_1_2->click();
+                break;
+            case 6:
+                game_ui.pushButton_2_0->click();
+                break;
+            case 7:
+                game_ui.pushButton_2_1->click();
+                break;
+            case 8:
+                game_ui.pushButton_2_2->click();
+                break;
             }
-                botTimer->deleteLater();
+            botTimer->deleteLater();
         });
         botTimer->start(500);
     }
@@ -434,7 +450,7 @@ void GameInterface::resetGame() {
     // Reset game turn
     turn = 0;
     //game_ui.label_turn->setText(QString(" "));
-    game_ui.Connect->setText("PLAY AGAIN");
+    game_ui.Connect->setText("Options");
     game_ui.show();
 }
 

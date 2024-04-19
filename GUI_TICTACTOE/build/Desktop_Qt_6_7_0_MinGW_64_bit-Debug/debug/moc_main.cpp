@@ -38,7 +38,9 @@ struct qt_meta_stringdata_CLASSGUI_optionENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSGUI_optionENDCLASS = QtMocHelpers::stringData(
     "GUI_option",
     "show_GUI_Option",
-    ""
+    "",
+    "QMainWindow*",
+    "window"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -59,10 +61,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSGUI_optionENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x0a,    1 /* Public */,
+       1,    1,   20,    2, 0x0a,    1 /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
 };
@@ -77,7 +79,8 @@ Q_CONSTINIT const QMetaObject GUI_option::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<GUI_option, std::true_type>,
         // method 'show_GUI_Option'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QMainWindow *, std::false_type>
     >,
     nullptr
 } };
@@ -88,11 +91,21 @@ void GUI_option::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<GUI_option *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->show_GUI_Option(); break;
+        case 0: _t->show_GUI_Option((*reinterpret_cast< std::add_pointer_t<QMainWindow*>>(_a[1]))); break;
         default: ;
         }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 0:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QMainWindow* >(); break;
+            }
+            break;
+        }
     }
-    (void)_a;
 }
 
 const QMetaObject *GUI_option::metaObject() const
@@ -119,7 +132,7 @@ int GUI_option::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         if (_id < 1)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+            qt_static_metacall(this, _c, _id, _a);
         _id -= 1;
     }
     return _id;
