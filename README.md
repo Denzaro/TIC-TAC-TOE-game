@@ -30,11 +30,8 @@
 
 
 
-- New bug: when the player are playing(the game havent done yet), the worst case if they click on options buttons and the game is crashed ( fix with when they click the option button, and they need to click 1 of 2 button between play again and back to mode button, the game ui page will be turn off)
-
 - New feature: 
-      + Back buttons: using on Level Ui, Options Ui (high priority)
-      + Music game: always run on Game Ui. (low priority) 
+      + Music game: always run on Game Ui. (high priority) --Dat 
 
 
       
