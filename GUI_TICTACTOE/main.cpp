@@ -2,6 +2,11 @@
 
 modeOfGame oldMode;
 
+void GameInterface::handleButtonClickOption(QPushButton *button)
+{
+    game_ui.close();
+}
+
 
 void GUI_option::show_GUI_Option(){
     QMainWindow *option_Window = new QMainWindow;
@@ -16,6 +21,7 @@ void GUI_option::show_GUI_Option(){
     });
     //xử lý nút play agian
     GameInterface *gameAgain = new GameInterface(0,nullptr,0,oldMode);
+    gameAgain->closeAllMainWindows();
     connect(optionUI->playagain, &QPushButton::clicked, [=]() {
         gameAgain->resetGame();
         option_Window->close(); // Đóng cửa sổ tùy chọn sau khi nhấn nút mode

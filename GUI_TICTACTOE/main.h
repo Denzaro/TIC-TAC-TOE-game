@@ -61,8 +61,9 @@ public:
     GameInterface(int agrc, char *agrv[], int c,MODE mode):app(agrc,agrv),Rules(c)
     {
         game_ui.setupUi(&game_ui);
-        GUI_option*option1=new GUI_option;
+        GUI_option *option1= new GUI_option;
         connect(game_ui.Connect, &QPushButton::clicked, option1,&GUI_option::show_GUI_Option);
+        connect(game_ui.Connect, &QPushButton::clicked, this, [this]{handleButtonClickOption(game_ui.Connect);});
         switch(mode)
         {
         case HUMANMODE:
@@ -128,6 +129,7 @@ public:
     void handleButtonClickBot(QPushButton *button, int in_row, int in_column);
     void handleButtonClickHardBot(QPushButton *button, int in_row, int in_column);
     void handleButtonClickMediumBot(QPushButton *button, int in_row, int in_column);
+    void handleButtonClickOption(QPushButton *button);
     void disablePlayButton();
     void enablePlayButton();
     void InitGame();
