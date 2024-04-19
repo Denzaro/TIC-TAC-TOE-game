@@ -115,7 +115,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Option", nullptr));
         label_3->setText(QString());
         playagain->setText(QCoreApplication::translate("MainWindow", "             PLAY AGAIN", nullptr));
         label_4->setText(QString());

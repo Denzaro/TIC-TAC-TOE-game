@@ -113,7 +113,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Result", nullptr));
         result->setText(QString());
         label->setText(QString());
         label_2->setText(QString());
