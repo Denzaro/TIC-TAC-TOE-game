@@ -2,10 +2,6 @@
 
 modeOfGame oldMode;
 
-void GUI_option::CloseWindow(QMainWindow *window)
-{
-    window->close();
-}
 
 void GameInterface::handleButtonClickOption(QPushButton *button)
 {
@@ -21,6 +17,7 @@ void GUI_option::show_GUI_Option(QMainWindow *window){
     //cấu hình nút new
     guiStart *modePage = new guiStart;
     connect(optionUI->mode, &QPushButton::clicked, [=]() {
+        window->close();
         modePage->showUIMode();
         option_Window->close(); // Đóng cửa sổ tùy chọn sau khi nhấn nút mode
     });
