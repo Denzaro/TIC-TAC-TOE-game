@@ -9,7 +9,7 @@
 #include "result_tictactoe.h"
 #include <QObject>
 #include <QTimer>
-
+#include <QMediaPlayer>
 
 class GUI_option :public QObject
 {
@@ -61,13 +61,18 @@ public:
     GameInterface(int agrc, char *agrv[], int c,MODE mode):app(agrc,agrv),Rules(c)
     {
         game_ui.setupUi(&game_ui);
+        QMediaPlayer *background_music = new QMediaPlayer();
+        background_music->setSource(QUrl("qrc:/sound/music/game_music.mp3"));
+        background_music->play();
         GUI_option *option1= new GUI_option;
         connect(game_ui.Connect, &QPushButton::clicked, option1,&GUI_option::show_GUI_Option);
         connect(game_ui.Connect, &QPushButton::clicked, this, [this]{handleButtonClickOption(game_ui.Connect);});
+
         switch(mode)
         {
         case HUMANMODE:
         /*---------Constructor for P vs P-------------------------------*/
+
             connect(game_ui.pushButton_0_0, &QPushButton::clicked, this, [this]{handleButtonClick(game_ui.pushButton_0_0,0,0);});
             connect(game_ui.pushButton_0_1, &QPushButton::clicked, this, [this]{handleButtonClick(game_ui.pushButton_0_1,0,1);});
             connect(game_ui.pushButton_0_2, &QPushButton::clicked, this, [this]{handleButtonClick(game_ui.pushButton_0_2,0,2);});

@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core gui
 
@@ -52,4 +52,5 @@ DISTFILES += \
     image/shadow.png \
     image/sound_off.png \
     image/sound_on.png \
-    image/table.png
+    image/table.png \
+    music/game_music.mp3
