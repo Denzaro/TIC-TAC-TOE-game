@@ -1,0 +1,24 @@
+<RCC>
+    <qresource prefix="/myimage">
+        <file>image/cup-1.png</file>
+        <file>image/cup-star.png</file>
+        <file>image/Menu.png</file>
+        <file>image/Result.png</file>
+        <file>image/retry.png</file>
+        <file>image/shadow.png</file>
+        <file>image/table.png</file>
+        <file>image/shadow.png</file>
+        <file>image/people.png</file>
+        <file>image/person.png</file>
+        <file>image/O.png</file>
+        <file>image/X.png</file>
+        <file>image/sound_off.png</file>
+        <file>image/sound_on.png</file>
+        <file>image/Title.png</file>
+        <file>image/background.png</file>
+        <file>image/back.png</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file>music/game_music.mp3</file>
+    </qresource>
+</RCC>
