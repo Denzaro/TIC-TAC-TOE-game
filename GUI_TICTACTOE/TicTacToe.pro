@@ -49,3 +49,4 @@ DISTFILES += \
     image/people.png \
     image/person.png \
     image/retry.png \
+    image/table.png \
