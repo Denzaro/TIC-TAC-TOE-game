@@ -1,6 +1,0 @@
-<RCC>
-  <qresource prefix="myimage">
-    <file>image/sound_off.png</file>
-    <file>image/sound_on.png</file>
-  </qresource>
-</RCC>

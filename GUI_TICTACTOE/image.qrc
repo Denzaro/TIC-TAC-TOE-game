@@ -18,7 +18,4 @@
         <file>image/background.png</file>
         <file>image/back.png</file>
     </qresource>
-    <qresource prefix="/sound">
-        <file>music/game_music.mp3</file>
-    </qresource>
 </RCC>

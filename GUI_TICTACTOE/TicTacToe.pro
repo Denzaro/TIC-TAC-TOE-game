@@ -8,24 +8,25 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    tictactoe_op.cpp
+    src/function.cpp \
+    src/main.cpp \
+    src/tictactoe_op.cpp
 
 HEADERS += \
-    GUI_LEVEL.h \
-    GUI_MODE.h \
-    main.h \
-    option.h \
-    result_tictactoe.h \
-    tictactoe_op.h \
-    tictactoe_ui.h \
+    inc/GUI_LEVEL.h \
+    inc/GUI_MODE.h \
+    inc/function.h \
+    inc/option.h \
+    inc/result_tictactoe.h \
+    inc/tictactoe_op.h \
+    inc/tictactoe_ui.h \
 
 FORMS += \
-    GUI_LEVEL.ui \
-    GUI_MODE.ui \
-    option.ui \
-    result_tictactoe.ui \
-    tictactoe_ui.ui
+    ui/GUI_LEVEL.ui \
+    ui/GUI_MODE.ui \
+    ui/option.ui \
+    ui/result_tictactoe.ui \
+    ui/tictactoe_ui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -48,8 +49,3 @@ DISTFILES += \
     image/people.png \
     image/person.png \
     image/retry.png \
-    image/shadow.png \
-    image/sound_off.png \
-    image/sound_on.png \
-    image/table.png \
-    music/game_music.mp3
