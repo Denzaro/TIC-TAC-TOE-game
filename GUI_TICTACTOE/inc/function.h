@@ -67,6 +67,7 @@ public:
         {
         case HUMANMODE:
             /*---------Constructor for P vs P-------------------------------*/
+            game_ui.setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe - Human Mode", nullptr));
             connect(game_ui.pushButton_0_0, &QPushButton::clicked, this, [this]{handleButtonClick2P(game_ui.pushButton_0_0,0,0);});
             connect(game_ui.pushButton_0_1, &QPushButton::clicked, this, [this]{handleButtonClick2P(game_ui.pushButton_0_1,0,1);});
             connect(game_ui.pushButton_0_2, &QPushButton::clicked, this, [this]{handleButtonClick2P(game_ui.pushButton_0_2,0,2);});
@@ -80,6 +81,7 @@ public:
 
         /*---------Constructor for P vs Easy Bot-------------------------------*/
         case EASYMODE:
+            game_ui.setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe - Easy Mode", nullptr));
             connect(game_ui.pushButton_0_0, &QPushButton::clicked, this, [this]{handleButtonClickEasyBot(game_ui.pushButton_0_0,0,0);});
             connect(game_ui.pushButton_0_1, &QPushButton::clicked, this, [this]{handleButtonClickEasyBot(game_ui.pushButton_0_1,0,1);});
             connect(game_ui.pushButton_0_2, &QPushButton::clicked, this, [this]{handleButtonClickEasyBot(game_ui.pushButton_0_2,0,2);});
@@ -95,6 +97,7 @@ public:
 
         /*-------------Constructor for P vs Hard Bot----------------------------*/
         case HARDMODE:
+            game_ui.setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe - Hard Mode", nullptr));
             connect(game_ui.pushButton_0_0, &QPushButton::clicked, this, [this]{handleButtonClickHardBot(game_ui.pushButton_0_0,0,0);});
             connect(game_ui.pushButton_0_1, &QPushButton::clicked, this, [this]{handleButtonClickHardBot(game_ui.pushButton_0_1,0,1);});
             connect(game_ui.pushButton_0_2, &QPushButton::clicked, this, [this]{handleButtonClickHardBot(game_ui.pushButton_0_2,0,2);});
@@ -108,6 +111,7 @@ public:
 
         /*--------------Constructor for P vs Medium Bot----------------------*/
         case MEDIUMMODE:
+            game_ui.setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe - Medium Mode", nullptr));
             connect(game_ui.pushButton_0_0, &QPushButton::clicked, this, [this]{handleButtonClickMediumBot(game_ui.pushButton_0_0,0,0);});
             connect(game_ui.pushButton_0_1, &QPushButton::clicked, this, [this]{handleButtonClickMediumBot(game_ui.pushButton_0_1,0,1);});
             connect(game_ui.pushButton_0_2, &QPushButton::clicked, this, [this]{handleButtonClickMediumBot(game_ui.pushButton_0_2,0,2);});
