@@ -120,7 +120,7 @@ void guiLevel::showUILevel(){
 }
 
 
-void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_column)
+void GameInterface::handleButtonClick2P(QPushButton *button,int in_row, int in_column)
 {
     row = in_row;
     column = in_column;
@@ -159,7 +159,7 @@ void GameInterface::handleButtonClick(QPushButton *button,int in_row, int in_col
 
 }
 
-void GameInterface::handleButtonClickBot(QPushButton *button,int in_row, int in_column)
+void GameInterface::handleButtonClickEasyBot(QPushButton *button,int in_row, int in_column)
 {
     row = in_row;
     column = in_column;
