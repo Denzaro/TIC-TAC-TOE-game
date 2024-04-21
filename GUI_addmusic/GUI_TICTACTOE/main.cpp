@@ -505,13 +505,13 @@ void GameInterface::disablePlayButton()
 QMediaPlayer* player = new QMediaPlayer;
 QAudioOutput* audioOutput = new QAudioOutput;
 void GameInterface::music_game(){
-    QString filePath = "C:/Users/dmx/Documents/HK2_NAM3/OOP/project_ck/TIC-TAC-TOE-game/GUI_addmusic/GUI_TICTACTOE/music/game_music.mp3";
+    QString filePath = "qrc:/sound/music/game_music.mp3";
     // Start playing the audio
 
     // Set the audio output for the player
     player->setAudioOutput(audioOutput);
     // Set the source URL for the player (replace the path with your own audio file path)
-    player->setSource(QUrl::fromLocalFile(filePath));
+    player->setSource(QUrl::fromUserInput(filePath));
     // Set the volume level for the audio output (0 - 100)
     // This represents 50% volume
     audioOutput->setVolume(60);
