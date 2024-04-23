@@ -351,6 +351,7 @@ public:
     {
         TicTacToe->setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe", nullptr));
         TicTacToe->setWindowIcon(QIcon(":/myimage/image/background.png"));
+        TicTacToe->setWindowFlags( (windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
         pushButton_2_0->setText(QString());
         pushButton_0_0->setText(QString());
         pushButton_2_1->setText(QString());
@@ -361,7 +362,7 @@ public:
         pushButton_1_2->setText(QString());
         pushButton_0_2->setText(QString());
         Connect->setText(QCoreApplication::translate("TicTacToe", "Options", nullptr));
-        header->setText(QCoreApplication::translate("TicTacToe", "Tic Tac Toe 1", nullptr));
+        header->setText(QCoreApplication::translate("TicTacToe", "Tic Tac Toe", nullptr));
         Player1_sym->setText(QCoreApplication::translate("TicTacToe", "X", nullptr));
         Player2_sym->setText(QCoreApplication::translate("TicTacToe", "O", nullptr));
         player1_label->setText(QCoreApplication::translate("TicTacToe", "PLAYER 1: ", nullptr));

@@ -117,6 +117,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Options", nullptr));
         MainWindow->setWindowIcon(QIcon(":/myimage/image/background.png"));
+        MainWindow->setWindowFlags( (windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
         label_3->setText(QString());
         playagain->setText(QCoreApplication::translate("MainWindow", "             PLAY AGAIN", nullptr));
         label_4->setText(QString());

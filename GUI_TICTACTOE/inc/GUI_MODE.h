@@ -113,6 +113,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "TicTacToe mode", nullptr));
         MainWindow->setWindowIcon(QIcon(":/myimage/image/background.png"));
+        MainWindow->setWindowFlags( (windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
         title->setText(QString());
         label_2->setText(QString());
         label_3->setText(QString());

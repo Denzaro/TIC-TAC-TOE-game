@@ -16,6 +16,9 @@ class GUI_option :public QObject
     Q_OBJECT
 public slots:
     void show_GUI_Option(QMainWindow *window);
+public:
+    QMainWindow option_Window;
+    Option optionUI;
 };
 
 

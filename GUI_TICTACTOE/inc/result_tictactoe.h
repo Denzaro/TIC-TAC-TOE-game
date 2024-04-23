@@ -114,6 +114,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Result", nullptr));
         MainWindow->setWindowIcon(QIcon(":/myimage/image/background.png"));
+        MainWindow->setWindowFlags( (windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
         result->setText(QString());
         label->setText(QString());
         label_2->setText(QString());

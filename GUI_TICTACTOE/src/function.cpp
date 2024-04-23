@@ -10,36 +10,32 @@ void GameInterface::handleButtonClickOption(QPushButton *button)
 
 
 void GUI_option::show_GUI_Option(QMainWindow *window){
-    QMainWindow *option_Window = new QMainWindow;
-    Option *optionUI = new Option;
-    optionUI->setupUi(option_Window);
-    option_Window->show();
+    optionUI.setupUi(&option_Window);
+    option_Window.show();
     //back button config
-    connect(optionUI->back_btn, &QPushButton::clicked, [=]() {
-        option_Window->close();
+    connect(optionUI.back_btn, &QPushButton::clicked, [=]() {
+        option_Window.close();
     });
 
     //cấu hình nút new
     guiStart *modePage = new guiStart;
-    connect(optionUI->mode, &QPushButton::clicked, [=]() {
+    connect(optionUI.mode, &QPushButton::clicked, [=]() {
         window->close();
         modePage->showUIMode();
-        option_Window->close();
+        option_Window.close();
     });
     //xử lý nút play agian
     GameInterface *gameAgain = new GameInterface(0,oldMode);
-    connect(optionUI->playagain, &QPushButton::clicked, [=]() {
+    connect(optionUI.playagain, &QPushButton::clicked, [=]() {
         window->close();
         gameAgain->resetGame();
-        option_Window->close();
+        option_Window.close();
     });
 }
 
 void GUI_Result::show_result(const QString &win,const QString & loss) {
 
     QMainWindow *resultWindow = new QMainWindow;
-
-
     Result *resultUi = new Result;
     resultUi->setupUi(resultWindow);
 

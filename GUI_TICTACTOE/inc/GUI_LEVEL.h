@@ -146,6 +146,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Level Choose", nullptr));
         MainWindow->setWindowIcon(QIcon(":/myimage/image/background.png"));
+        MainWindow->setWindowFlags( (windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
         background->setText(QString());
         label_2->setText(QString());
         label_3->setText(QString());
