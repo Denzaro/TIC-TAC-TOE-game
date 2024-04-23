@@ -29,8 +29,8 @@ class GUI_Result : public QObject
 
 public slots:
     void show_result(const QString &win,const QString & lose);
-
 private:
+    QMainWindow resultWindow;
     Result result;
 
 };
@@ -60,16 +60,21 @@ private:
     MainWindow game_ui;
 public:
     GUI_option *option1;
+    GUI_Result resultUi;
+
     GameInterface(int c,MODE mode):Rules(c)
     {
         game_ui.setupUi(&game_ui);
+
         option1= new GUI_option;
         //connect(game_ui.Connect, &QPushButton::clicked, option1,&GUI_option::show_GUI_Option);
         connect(game_ui.Connect, &QPushButton::clicked, this, [this]{handleButtonClickOption(game_ui.Connect);});
+
         switch(mode)
         {
         case HUMANMODE:
             /*---------Constructor for P vs P-------------------------------*/
+
             game_ui.setWindowTitle(QCoreApplication::translate("TicTacToe", "TicTacToe - Human Mode", nullptr));
             connect(game_ui.pushButton_0_0, &QPushButton::clicked, this, [this]{handleButtonClick2P(game_ui.pushButton_0_0,0,0);});
             connect(game_ui.pushButton_0_1, &QPushButton::clicked, this, [this]{handleButtonClick2P(game_ui.pushButton_0_1,0,1);});
@@ -130,7 +135,8 @@ public:
 
         // connect(game_ui.pushButton_2_2, SIGNAL(clicked()), this, SLOT(handleButtonClick_2_2()));
     }
-    virtual ~GameInterface() {}
+    virtual ~GameInterface() {
+    }
     void handleButtonClick2P(QPushButton *button, int in_row, int in_column);
     void handleButtonClickEasyBot(QPushButton *button, int in_row, int in_column);
     void handleButtonClickHardBot(QPushButton *button, int in_row, int in_column);
@@ -140,7 +146,7 @@ public:
     void enablePlayButton();
     void InitGame();
     void resetGame();
-    void closeAllMainWindows();
+    void closeWindows(QString WindowTitle);
 };
 
 

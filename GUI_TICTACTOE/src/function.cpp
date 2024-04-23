@@ -19,35 +19,37 @@ void GUI_option::show_GUI_Option(QMainWindow *window){
 
     //cấu hình nút new
     guiStart *modePage = new guiStart;
+    GameInterface *gameAgain = new GameInterface(0,oldMode);
     connect(optionUI.mode, &QPushButton::clicked, [=]() {
         window->close();
         modePage->showUIMode();
         option_Window.close();
+        gameAgain->closeWindows("Result");
     });
     //xử lý nút play agian
-    GameInterface *gameAgain = new GameInterface(0,oldMode);
+
     connect(optionUI.playagain, &QPushButton::clicked, [=]() {
         window->close();
         gameAgain->resetGame();
         option_Window.close();
+        gameAgain->closeWindows("Result");
     });
 }
 
 void GUI_Result::show_result(const QString &win,const QString & loss) {
 
-    QMainWindow *resultWindow = new QMainWindow;
-    Result *resultUi = new Result;
-    resultUi->setupUi(resultWindow);
-
-
-    resultUi->win->setText(win);
-    resultWindow->show();
+    // QMainWindow *resultWindow = new QMainWindow;
+    // Result *resultUi = new Result;
+    result.setupUi(&resultWindow);
+    result.win->setText(win);
+    resultWindow.show();
     //back button config
-    connect(resultUi->back_btn, &QPushButton::clicked, [=]() {
-        resultWindow->close();
+    connect(result.back_btn, &QPushButton::clicked, [=]() {
+        resultWindow.close();
     });
 
 }
+
 
 void guiStart::showUIMode(){
     QMainWindow *guiMode_window = new QMainWindow;
@@ -55,8 +57,6 @@ void guiStart::showUIMode(){
     mode->setupUi(guiMode_window);
     guiMode_window->show();
     //guiMode_window->setAttribute(Qt::WA_QuitOnClose);
-
-
 
     //button configurations
     GameInterface *gameUI = new GameInterface(0,HUMANMODE);
@@ -129,9 +129,7 @@ void GameInterface::handleButtonClick2P(QPushButton *button,int in_row, int in_c
     if(CheckWin())
     {
         QString win = QString("Player %1 WINS").arg(QString(play));
-
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,NULL);
+        resultUi.show_result(win,NULL);
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -149,8 +147,8 @@ void GameInterface::handleButtonClick2P(QPushButton *button,int in_row, int in_c
     button->setEnabled(false);
     if(turn==9 && !CheckWin()){
         QString draw = QString("DRAWWWW!");
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(draw,NULL);
+
+        resultUi.show_result(draw,NULL);
     }
 
 }
@@ -169,8 +167,8 @@ void GameInterface::handleButtonClickEasyBot(QPushButton *button,int in_row, int
     {
         QString win = QString("Player %1 WINS").arg(QString(play));
 
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,NULL);
+
+        resultUi.show_result(win,NULL);
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -189,8 +187,7 @@ void GameInterface::handleButtonClickEasyBot(QPushButton *button,int in_row, int
     if(turn==9 && !CheckWin())
     {
         QString draw = QString("DRAWWWW!");
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(draw,NULL);
+        resultUi.show_result(draw,NULL);
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
@@ -258,8 +255,8 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
     {
         QString win = QString("Player %1 WINS").arg(QString(play));
 
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,NULL);
+
+        resultUi.show_result(win,NULL);
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -278,8 +275,8 @@ void GameInterface::handleButtonClickHardBot(QPushButton *button, int in_row, in
     if(turn==9 && !CheckWin())
     {
         QString draw = QString("DRAWWWW!");
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(draw,NULL);
+
+        resultUi.show_result(draw,NULL);
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
@@ -344,8 +341,8 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
 
         QString win = QString("Player %1 WINS").arg(QString(play));
 
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(win,NULL);
+
+        resultUi.show_result(win,NULL);
         game_ui.pushButton_0_0->setEnabled(false);
         game_ui.pushButton_0_1->setEnabled(false);
         game_ui.pushButton_0_2->setEnabled(false);
@@ -364,8 +361,8 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
     if(turn==9 && !CheckWin())
     {
         QString draw = QString("DRAWWWW!");
-        GUI_Result *guiResult = new GUI_Result;
-        guiResult->show_result(draw,NULL);
+
+        resultUi.show_result(draw,NULL);
     }
     /*-----------------Bot operation here--------------*/
     if(turn%2!=0 && !CheckWin() && turn<9)
@@ -415,7 +412,7 @@ void GameInterface::handleButtonClickMediumBot(QPushButton *button, int in_row, 
 }
 
 
-void GameInterface::closeAllMainWindows() {
+void GameInterface::closeWindows(QString WindowTitle) {
     QList<QMainWindow *> mainWindows;
     foreach (QWidget *widget, QApplication::topLevelWidgets()) {
         QMainWindow *mainWindow = qobject_cast<QMainWindow *>(widget);
@@ -423,7 +420,8 @@ void GameInterface::closeAllMainWindows() {
             mainWindows.append(mainWindow);
     }
     foreach (QMainWindow *window, mainWindows) {
-        window->close();
+        if(window->windowTitle() == WindowTitle)
+            window->close();
     }
 }
 
