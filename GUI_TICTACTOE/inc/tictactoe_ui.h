@@ -52,6 +52,10 @@ public:
         if (TicTacToe->objectName().isEmpty())
             TicTacToe->setObjectName("TicTacToe");
         TicTacToe->resize(660, 530);
+        TicTacToe->setMaximumHeight(530);
+        TicTacToe->setMinimumHeight(530);
+        TicTacToe->setMaximumWidth(660);
+        TicTacToe->setMinimumWidth(660);
         TicTacToe->setStyleSheet(QString::fromUtf8("\n"
 "\n"
 "background: rgb(229, 255, 253);\n"
