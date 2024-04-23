@@ -17,22 +17,20 @@ void GUI_option::show_GUI_Option(QMainWindow *window){
         option_Window.close();
     });
 
-    //cấu hình nút new
     guiStart *modePage = new guiStart;
     GameInterface *gameAgain = new GameInterface(0,oldMode);
     connect(optionUI.mode, &QPushButton::clicked, [=]() {
+        option_Window.close();
+        gameAgain->closeWindows("Result");
         window->close();
         modePage->showUIMode();
-        option_Window.close();
-        gameAgain->closeWindows("Result");
     });
-    //xử lý nút play agian
 
     connect(optionUI.playagain, &QPushButton::clicked, [=]() {
-        window->close();
-        gameAgain->resetGame();
         option_Window.close();
         gameAgain->closeWindows("Result");
+        window->close();
+        gameAgain->resetGame();
     });
 }
 

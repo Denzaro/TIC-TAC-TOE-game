@@ -41,6 +41,10 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(580, 384);
+        MainWindow->setMaximumHeight(384);
+        MainWindow->setMinimumHeight(384);
+        MainWindow->setMaximumWidth(580);
+        MainWindow->setMinimumWidth(580);
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: rgb(13, 200, 178);"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
